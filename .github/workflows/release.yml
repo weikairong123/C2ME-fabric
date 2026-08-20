@@ -63,16 +63,7 @@ jobs:
         run: |
           ./gradlew clean build --stacktrace
 
-      - name: upload to modrinth and curseforge
-        run: ./gradlew publishMods
-        env:
-          MODRINTH_TOKEN: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
-          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_API_TOKEN }}
-          OVERRIDE_CHANGELOG: ${{ inputs.changelog }}
-          OVERRIDE_DISPLAY_NAME: ${{ inputs.display_name }}
-          OVERRIDE_RELEASE_TYPE: ${{ inputs.release_type }}
-          PUBLISH_DRY_RUN: ${{ inputs.dry_run }}
-        continue-on-error: true
+      
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
